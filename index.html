@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,21 @@
     <!-- Use Inter font family -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
         body {
             font-family: 'Inter', sans-serif;
         }
+
         /* Custom scrollbar style for better aesthetics in dark theme */
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #06b6d4;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-track {
             background: #0f172a;
         }
@@ -43,20 +48,25 @@
         <span class="bg-pink-500/20 text-pink-400 border-2 border-pink-400/50"></span>
     </div>
 </head>
+
 <body class="bg-slate-950 text-slate-200 selection:bg-cyan-500 selection:text-white">
 
     <!-- Root container for the application -->
     <div id="app" class="min-h-screen">
         <!-- Content will be rendered here by JavaScript -->
         <div class="fixed inset-0 z-0 pointer-events-none">
-            <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px] animate-pulse"></div>
-            <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] animate-pulse delay-700"></div>
+            <div
+                class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px] animate-pulse">
+            </div>
+            <div
+                class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px] animate-pulse delay-700">
+            </div>
         </div>
         <div id="nav-container"></div>
         <main id="content-container" class="relative z-10"></main>
         <div id="footer-container"></div>
     </div>
-    
+
     <!-- Modal Container -->
     <div id="modal-root"></div>
 
@@ -79,7 +89,7 @@
             Lightbulb: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10"><path d="M15 14c.2-1 .9-2.2 2.1-3.4a1 1 0 1 0-1.4-1.4c-1.2 1.2-1.9 2.4-2.1 3.4"/><path d="M14 19a4 4 0 1 0-8 0h8Z"/><path d="M14 19a4 4 0 1 0-8 0h8Z"/></svg>`,
             ChevronRight: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m9 18 6-6-6-6"/></svg>`,
         };
-        
+
         // Data definitions (Static)
         const servicesData = [
             { title: "PhD Thesis Assistance", icon: Icons.GraduationCap, desc: "End-to-end guidance from topic selection to final defense preparation using literature gaps analysis.", tags: ["Research Design", "Defense Prep", "Proofreading"], color: "cyan" },
@@ -162,15 +172,15 @@
                     </div>
                 </div>
             `;
-            
+
             // Attach event listeners
             document.getElementById('close-modal-btn').addEventListener('click', onClose);
-            document.getElementById('contact-form').addEventListener('submit', function(e) {
+            document.getElementById('contact-form').addEventListener('submit', function (e) {
                 e.preventDefault();
                 // Mock success message (replacing the forbidden alert())
                 document.getElementById('contact-form').classList.add('hidden');
                 document.getElementById('modal-message').classList.remove('hidden');
-                
+
                 // Close after a short delay
                 setTimeout(onClose, 2000);
             });
@@ -300,7 +310,7 @@
                 <!-- Quick Overview Cards Section -->
                 <section class="py-20 px-6 bg-slate-900/20 border-t border-b border-white/5">
                     <div class="max-w-7xl mx-auto">
-                        <h2 class="text-3xl font-bold text-center mb-12">Why ChooseElite Research Solutions?</h2>
+                        <h2 class="text-3xl font-bold text-center mb-12">Why Choose Elite Research Solutions?</h2>
                         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                             ${overviewCards.map((card, index) => `
                                 <button 
@@ -362,7 +372,7 @@
             // Attach event listeners for Home Page
             document.getElementById('consult-expert-btn').addEventListener('click', () => updateState({ showContactModal: true }));
             container.querySelectorAll('.overview-card').forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const page = this.getAttribute('data-page');
                     if (page) {
                         updateState({ activePage: page });
@@ -370,7 +380,7 @@
                 });
             });
             container.querySelectorAll('.methodology-tab').forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const index = parseInt(this.getAttribute('data-tab-index'));
                     updateState({ activeTab: index });
                 });
@@ -420,7 +430,7 @@
                                     <h3 class="text-xl font-bold mb-2 text-white">${service.title}</h3>
                                     <p class="text-sm text-slate-400 leading-relaxed mb-4">${service.desc}</p>
                                     <div class="flex gap-2">
-                                        ${service.tags.slice(0,2).map(tag => `
+                                        ${service.tags.slice(0, 2).map(tag => `
                                             <span class="text-[10px] uppercase tracking-wider text-slate-500">${tag}</span>
                                         `).join('')}
                                     </div>
@@ -505,7 +515,7 @@
                 <section class="py-24 px-6 relative z-10 bg-slate-950 min-h-screen">
                     <div class="max-w-7xl mx-auto pt-16">
                         <div class="mb-16 text-center">
-                            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">About Firm Elite Research Solutions: Excellence in Academia</h2>
+                            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">About Firm XYZ: Excellence in Academia</h2>
                             <p class="text-slate-400 max-w-2xl mx-auto">Our commitment is to elevate the quality of global academic output through specialist guidance and integrity.</p>
                         </div>
                         
@@ -535,13 +545,13 @@
                             <!-- Left Column: Expert Cards -->
                             <div id="expert-cards-container" class="lg:col-span-4 space-y-4">
                                 ${featuredExperts.map((expert) => {
-                                    const isActive = expert.id === state.activeExpertId;
-                                    const iconHtml = expert.icon.replace('w-8 h-8', 'w-5 h-5').replace('w-10 h-10', 'w-5 h-5');
-                                    const activeClass = isActive 
-                                        ? `bg-slate-800 border-${expert.color}-500 shadow-lg shadow-${expert.color}-500/10`
-                                        : 'bg-slate-900/50 border-white/10 hover:bg-slate-800/70 hover:border-white/20';
+                const isActive = expert.id === state.activeExpertId;
+                const iconHtml = expert.icon.replace('w-8 h-8', 'w-5 h-5').replace('w-10 h-10', 'w-5 h-5');
+                const activeClass = isActive
+                    ? `bg-slate-800 border-${expert.color}-500 shadow-lg shadow-${expert.color}-500/10`
+                    : 'bg-slate-900/50 border-white/10 hover:bg-slate-800/70 hover:border-white/20';
 
-                                    return `
+                return `
                                         <button
                                             data-expert-id="${expert.id}"
                                             class="expert-card w-full text-left p-6 rounded-2xl border transition-all duration-300 transform ${activeClass}"
@@ -559,7 +569,7 @@
                                             <p class="mt-3 text-sm text-slate-400">Expertise: ${expert.expertise.split(', ')[0]}</p>
                                         </button>
                                     `;
-                                }).join('')}
+            }).join('')}
                             </div>
                             
                             <!-- Right Column: Dynamic Profile Summary -->
@@ -609,7 +619,7 @@
 
             // Attach event listeners for expert selection
             container.querySelectorAll('.expert-card').forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const expertId = parseInt(this.getAttribute('data-expert-id'));
                     updateState({ activeExpertId: expertId });
                 });
@@ -714,13 +724,13 @@
             document.getElementById('contact-nav-btn').addEventListener('click', () => updateState({ activePage: 'contact' }));
 
             document.querySelectorAll('.nav-item').forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     updateState({ activePage: this.getAttribute('data-page') });
                 });
             });
 
             document.querySelectorAll('.mobile-nav-item').forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     updateState({ activePage: this.getAttribute('data-page'), isMenuOpen: false });
                 });
             });
@@ -771,7 +781,7 @@
             // Always render nav and footer as they are part of the main structure
             renderNav(updateState);
             renderFooter();
-            
+
             // Handle Modal rendering outside of the main content flow
             const modalRoot = document.getElementById('modal-root');
             if (state.showContactModal) {
@@ -794,7 +804,7 @@
             if (state.activePage !== oldPage) {
                 window.scrollTo(0, 0);
             }
-            
+
             renderApp(updateState);
         };
 
@@ -815,4 +825,5 @@
         });
     </script>
 </body>
+
 </html>
